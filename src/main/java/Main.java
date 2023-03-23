@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         Auto auto = new Auto(true, 120);
-        Conductor conductor = new Conductor("Clara", auto, false);
+        Conductor conductor = new Conductor("Clara Cano", auto, false);
 
         System.out.println("");
         System.out.println("¿El auto de " + conductor.getNombre() + " es seguro?");
