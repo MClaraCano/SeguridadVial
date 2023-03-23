@@ -1,23 +1,22 @@
 public class Auto extends Vehiculo {
 
-    boolean ruedaAuxilio;
-    int velocidadAuto;
+    private boolean ruedaAuxilio;
+    private int velocidadAuto = 100;
 
+    Vehiculo vehiculo;
 
     public Auto(boolean ruedaAuxilio) {
         this.ruedaAuxilio = ruedaAuxilio;
     }
 
-    @Override
-    public int getVelocidad() {
-        return velocidad + velocidadAuto;
+
+    public int getVelocidadAuto() {
+        return velocidadAuto;
     }
 
-    @Override
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad + velocidadAuto;
+    public void setVelocidadAuto(int velocidadAuto) {
+        this.velocidadAuto = velocidadAuto;
     }
-
 
     public Auto(boolean ruedaAuxilio, int velocidadAuto) {
         this.ruedaAuxilio = ruedaAuxilio;
@@ -40,4 +39,16 @@ public class Auto extends Vehiculo {
     public void setRuedaAuxilio(boolean ruedaAuxilio) {
         this.ruedaAuxilio = ruedaAuxilio;
     }
+
+
+    boolean autoSeguro;
+    public boolean autoEsSeguro (Auto auto){
+        if (auto.isRuedaAuxilio() && auto.getVelocidadAuto() <= 140){
+            return autoSeguro = true;
+        } else {
+            return autoSeguro = false;
+        }
+    }
 }
+
+

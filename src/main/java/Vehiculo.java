@@ -1,6 +1,6 @@
 public class Vehiculo {
 
-    private int velocidad = 100;
+    private int velocidad;
 
     public Vehiculo() {
     }
@@ -16,4 +16,8 @@ public class Vehiculo {
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
+
+
 }
+
+

@@ -1,5 +1,6 @@
 public class Conductor {
 
+    private String nombre;
     private Auto auto;
     private Moto moto;
     private boolean tieneRegistro;
@@ -9,13 +10,15 @@ public class Conductor {
     public Conductor() {
     }
 
-    public Conductor(Auto auto, Moto moto, boolean tieneRegistro) {
+    public Conductor(String nombre, Auto auto, Moto moto, boolean tieneRegistro) {
+        this.nombre = nombre;
         this.auto = auto;
         this.moto = moto;
         this.tieneRegistro = tieneRegistro;
     }
 
-    public Conductor(Auto auto, boolean tieneRegistro) {
+    public Conductor(String nombre, Auto auto, boolean tieneRegistro) {
+        this.nombre = nombre;
         this.auto = auto;
         this.tieneRegistro = tieneRegistro;
     }
@@ -44,36 +47,28 @@ public class Conductor {
         this.tieneRegistro = tieneRegistro;
     }
 
-
-
-    boolean autoSeguro;
-    public void autoEsSeguro (Auto auto){
-        if (auto.isRuedaAuxilio() && auto.getVelocidad() <= 140){
-            System.out.println("Auto seguro: Cuenta con rueda de auxilio y velocidad permitida");
-            autoSeguro = true;
-        } else {
-            System.out.println ("Sin rueda de auxilio y/o velocidad alta: Auto NO seguro");
-            autoSeguro = false;
-        }
+    public String getNombre() {
+        return nombre;
     }
 
-    boolean motoSegura;
-    public void motoEsSegura (Moto moto){
-        if (moto.espejosRetrovisores >= 2 && moto.getVelocidad() < 160){
-            System.out.println("Moto segura: Cuenta con al menos 2 esp. retrovisores y velocidad permitida");
-            autoSeguro = true;
-        } else {
-            System.out.println("Sin suficientes esp. retrovisores y/o velocidad alta: Auto NO seguro");
-            autoSeguro = false;
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void conductorEsSeguro(Conductor conductor){
-        if (conductor.tieneRegistro && autoSeguro){
+
+    boolean esSeguro;
+
+    public boolean conductorEsSeguro(Conductor conductor){
+        if (conductor.tieneRegistro && conductor.auto.autoEsSeguro(auto)){
             System.out.println("Conductor seguro: Cuenta con registro y auto seguro");
+            esSeguro = true;
+        } else if (conductor.tieneRegistro && !conductor.auto.autoEsSeguro(auto)){
+            System.out.println("Conductor no seguro: No tiene un auto seguro");
+            esSeguro = false;
         } else {
-            System.out.println("Conductor no seguro: No tiene registro y/o auto seguro");
-        }
+            System.out.println("Conductor no seguro: No tiene registro");
+            esSeguro = false;
+        } return esSeguro;
     }
 
 }
